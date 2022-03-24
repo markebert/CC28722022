@@ -10,21 +10,25 @@ import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Intake extends SubsystemBase {
+
   /** Creates a new Intake. */
   private VictorSPX intakeRoller;
+
   public Intake() {
-  intakeRoller = new VictorSPX(9);
-    
+    intakeRoller = new VictorSPX(9);
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
   }
-  public void setIntakeRoller(double speed){
-    intakeRoller.set(ControlMode.PercentOutput,speed);
+
+  public void setIntakeRoller(double speed) {
+    intakeRoller.set(ControlMode.PercentOutput, speed);
   }
-  public void stop(){
-    intakeRoller.set(ControlMode.PercentOutput,0);
+
+  public void stop() {
+    intakeRoller.set(ControlMode.PercentOutput, 0);
   }
+
 }

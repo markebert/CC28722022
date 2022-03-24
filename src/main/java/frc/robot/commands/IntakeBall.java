@@ -11,15 +11,17 @@ import frc.robot.subsystems.Intake;
 public class IntakeBall extends CommandBase {
   /** Creates a new IntakeBall. */
   Intake intake;
+
   public IntakeBall(Intake i) {
     intake = i;
     addRequirements(intake);
     // Use addRequirements() here to declare subsystem dependencies.
   }
-  
+
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override

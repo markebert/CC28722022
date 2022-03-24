@@ -10,6 +10,7 @@ import frc.robot.subsystems.Intake;
 
 public class OuttakeBall extends CommandBase {
   private Intake intake;
+
   /** Creates a new OuttakeBall. */
   public OuttakeBall(Intake i) {
     intake = i;
@@ -19,7 +20,8 @@ public class OuttakeBall extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override

@@ -36,9 +36,12 @@ import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Intake;
 
 /**
- * This class is where the bulk of the robot should be declared. Since Command-based is a
- * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
- * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
+ * This class is where the bulk of the robot should be declared. Since
+ * Command-based is a
+ * "declarative" paradigm, very little robot logic should actually be handled in
+ * the {@link Robot}
+ * periodic methods (other than the scheduler calls). Instead, the structure of
+ * the robot (including
  * subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
@@ -48,13 +51,16 @@ public class RobotContainer {
   public static XboxController driverController = new XboxController(Constants.DriveJoystick);
   DifferentialDriveVoltageConstraint autoVoltageConstraint;
   TrajectoryConfig config;
-  String trajectoryJSON="paths/.json";
+  String trajectoryJSON = "paths/.json";
   Path trajectoryPath;
   Trajectory trajectory;
-  private final Intake intake;  
+  private final Intake intake;
   private final IntakeBall intakeBall;
   private final OuttakeBall outtakeBall;
-  /** The container for the robot. Contains subsystems, OI devices, and commands. */
+
+  /**
+   * The container for the robot. Contains subsystems, OI devices, and commands.
+   */
   public RobotContainer() {
     CommandScheduler.getInstance().setDefaultCommand(dt, driveWithJoysticks);
     // Configure the button bindings
@@ -67,9 +73,11 @@ public class RobotContainer {
   }
 
   /**
-   * Use this method to define your button->command mappings. Buttons can be created by
+   * Use this method to define your button->command mappings. Buttons can be
+   * created by
    * instantiating a {@link GenericHID} or one of its subclasses ({@link
-   * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
+   * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing
+   * it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
@@ -85,42 +93,48 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    /*autoVoltageConstraint =
-    new DifferentialDriveVoltageConstraint(
-      new SimpleMotorFeedforward(Constants.ksVolts, Constants.kvVoltSecondsPerMeter),
-       Constants.kDriveKinematics,
-        5);
-    config =
-    new TrajectoryConfig(Constants.kMaxSpeedMetersPerSecond, 
-    Constants.kMaxAccelerationMetersPerSecondSquared)
-    .setKinematics(Constants.kDriveKinematics)
-    .addConstraint(autoVoltageConstraint);
-    Trajectory exampleTrajectory = TrajectoryGenerator.generateTrajectory(new Pose2d(0,0,new Rotation2d(0)),
-    List.of(
-      new Translation2d(1,0),
-      new Translation2d(2,0)),
-      new Pose2d(3,0,new Rotation2d(0)),
-      config);
-    RamseteController disabledRamsete = new RamseteController(){
-      public ChassisSpeeds calculate(Pose2d currentPose, Pose2d poseRef, double linearVelocityRefMeters,double angularVelocityRefRaidiansPersSecond){
-        return new ChassisSpeeds(linearVelocityRefMeters, 0.0, angularVelocityRefRaidiansPersSecond);
-      }
-    };
-   RamseteCommand ramseteCommand = new RamseteCommand(
-      exampleTrajectory,
-      dt::getPose,
-      disabledRamsete,
-      new SimpleMotorFeedforward(Constants.ksVolts, Constants.kvVoltSecondsPerMeter,Constants.kaVoltSecondsSqaredPerMeter),
-      Constants.kDriveKinematics,
-      dt::getWheelSpeds,
-      new PIDController(Constants.kPDriveVel,0,0),
-      new PIDController(Constants.kPDriveVel, 0, 0),
-      dt::voltDrive,
-      dt
-    );
-    */
+    /*
+     * autoVoltageConstraint =
+     * new DifferentialDriveVoltageConstraint(
+     * new SimpleMotorFeedforward(Constants.ksVolts,
+     * Constants.kvVoltSecondsPerMeter),
+     * Constants.kDriveKinematics,
+     * 5);
+     * config =
+     * new TrajectoryConfig(Constants.kMaxSpeedMetersPerSecond,
+     * Constants.kMaxAccelerationMetersPerSecondSquared)
+     * .setKinematics(Constants.kDriveKinematics)
+     * .addConstraint(autoVoltageConstraint);
+     * Trajectory exampleTrajectory = TrajectoryGenerator.generateTrajectory(new
+     * Pose2d(0,0,new Rotation2d(0)),
+     * List.of(
+     * new Translation2d(1,0),
+     * new Translation2d(2,0)),
+     * new Pose2d(3,0,new Rotation2d(0)),
+     * config);
+     * RamseteController disabledRamsete = new RamseteController(){
+     * public ChassisSpeeds calculate(Pose2d currentPose, Pose2d poseRef, double
+     * linearVelocityRefMeters,double angularVelocityRefRaidiansPersSecond){
+     * return new ChassisSpeeds(linearVelocityRefMeters, 0.0,
+     * angularVelocityRefRaidiansPersSecond);
+     * }
+     * };
+     * RamseteCommand ramseteCommand = new RamseteCommand(
+     * exampleTrajectory,
+     * dt::getPose,
+     * disabledRamsete,
+     * new SimpleMotorFeedforward(Constants.ksVolts,
+     * Constants.kvVoltSecondsPerMeter,Constants.kaVoltSecondsSqaredPerMeter),
+     * Constants.kDriveKinematics,
+     * dt::getWheelSpeds,
+     * new PIDController(Constants.kPDriveVel,0,0),
+     * new PIDController(Constants.kPDriveVel, 0, 0),
+     * dt::voltDrive,
+     * dt
+     * );
+     */
     // An ExampleCommand will run in autonomous
     return driveWithJoysticks;
-    //ramseteCommand.andThen(()-> dt.voltDrive(0, 0));
+    // ramseteCommand.andThen(()-> dt.voltDrive(0, 0));
   }
 }
